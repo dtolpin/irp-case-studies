@@ -5,6 +5,7 @@ intrusion detection.
 import math
 import scipy.stats
 import irp.map
+from irp.ndist import nexpon, ngamma
 
 
 def parameters(t_s, t_e, S, pi, Kmax=None, max_iter=0):
@@ -45,8 +46,8 @@ def parameters(t_s, t_e, S, pi, Kmax=None, max_iter=0):
         _, yscale = scipy.stats.expon.fit([y for t, y in Sn], floc=0)
 
         # Create distribution objects
-        F = scipy.stats.gamma(a=tshape, scale=tscale)
-        G = scipy.stats.expon(scale=yscale)
+        F = ngamma(a=tshape, scale=tscale)
+        G = nexpon(scale=yscale)
 
         # Compute new labels
         new_labels = irp.map.labels(t_s, t_e, S, pi, F, G)
