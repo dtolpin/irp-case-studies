@@ -10,7 +10,7 @@ $\frac{\Gamma\left( 2\cdot a-1\right) }{{2}^{2\cdot a - 1} \cdot {{\Gamma\left(
 a\right) }^{2}}\cdot \mathit{scale}}$.
 """
 
-class Normdist(object):
+class _Normdist(object):
     """Mean-normalized continuous distribution wrapper.
     """
     def __init__(self, dist, norm):
@@ -27,11 +27,11 @@ class Normdist(object):
 def nexpon(scale):
     """Mean-normalized exponential distribution.
     """
-    return Normdist(scipy.stats.expon(scale=scale), 1/(2. * scale))
+    return _Normdist(scipy.stats.expon(scale=scale), 1/(2. * scale))
 
 def ngamma(a, scale):
     """Mean-normalizer gamma distribution.
     """
-    return Normdist(scipy.stats.gamma(a=a, scale=scale),
-                    scipy.special.gamma(2 * a   - 1) /
-                    (2 ** (2 * a - 1) * scipy.special.gamma(a) ** 2 * scale))
+    return _Normdist(scipy.stats.gamma(a=a, scale=scale),
+                     scipy.special.gamma(2 * a   - 1) /
+                     (2 ** (2 * a - 1) * scipy.special.gamma(a) ** 2 * scale))
