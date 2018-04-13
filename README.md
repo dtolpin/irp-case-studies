@@ -1,7 +1,7 @@
-# Case studies for paper 'Intrusions in Renewal Processes'
+# Case studies for paper "Intrusions in Marked Renewal Processes"
 
 This repository contains code and data for case studies in the paper
-'Intrusions in Renewal Processes'.
+"Intrusions in Marked Renewal Processes".
 
 The notebook with all experiments is in `notebook/experiments`. The notebook
 uses code in the `irp` package. Use usual _setuptools_ procedure to install the
